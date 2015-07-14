@@ -253,7 +253,7 @@ public class MainActivity extends ActionBarActivity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             // Inflate the layout for this fragment
-            View v= inflater.inflate(R.layout.frag1, container, false);
+            View v= inflater.inflate(R.layout.frag_2, container, false);
             mData.add(new GameEntity(R.drawable.image_1, R.string.title_1));
             mData.add(new GameEntity(R.drawable.image_2, R.string.title_2));
             mData.add(new GameEntity(R.drawable.image_3, R.string.title_3));
@@ -306,7 +306,7 @@ public class MainActivity extends ActionBarActivity {
 
     }*/
 
-    public static class Fragment1 extends Fragment {
+    public static class Fragment2 extends Fragment {
 
         private CallbackManager callbackManager;
 
@@ -339,10 +339,10 @@ public class MainActivity extends ActionBarActivity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             // Inflate the layout for this fragment
-            View view= inflater.inflate(R.layout.frag1, container, false);
+            View view= inflater.inflate(R.layout.frag_2, container, false);
             callbackManager = CallbackManager.Factory.create();
 
-            LoginButton loginButton = (LoginButton) view.findViewById(R.id.login_button);
+           /* LoginButton loginButton = (LoginButton) view.findViewById(R.id.login_button);
             loginButton.setReadPermissions("user_friends");
             // If using in a fragment
             loginButton.setFragment(this);
@@ -371,6 +371,12 @@ public class MainActivity extends ActionBarActivity {
 
                     //Profile user;
                     //userPicture.setProfileId(user.getId());
+
+                    if (android.os.Build.VERSION.SDK_INT >= 11)
+                    {
+                        getActivity().recreate();
+                    }
+
                 }
 
                 @Override
@@ -382,7 +388,7 @@ public class MainActivity extends ActionBarActivity {
                 public void onError(FacebookException exception) {
                     // App code
                 }
-            });
+            });*/
 
             lv = (StaggeredGridView) view.findViewById(R.id.grid_view);
 
@@ -400,7 +406,7 @@ public class MainActivity extends ActionBarActivity {
 
 
 
-            //mResult = (TextView) view.findViewById(R.id.result);
+           // mResult = (TextView) view.findViewById(R.id.result);
             //mMore = (TextView) view.findViewById(R.id.load_more);
             //mMore.setPaintFlags(mMore.getPaint().getFlags() | Paint.UNDERLINE_TEXT_FLAG);
             /*mGetButton = (Button) view.findViewById(R.id.button);
@@ -420,7 +426,7 @@ public class MainActivity extends ActionBarActivity {
             dialog.setIndeterminate(true);
             dialog.setCanceledOnTouchOutside(false);
 
-
+            //lv.setEmptyView(view.findViewById(R.id.emptyview));
 
             String entityId="137744623265";
             SimpleFacebook.getInstance().getPhotos(entityId, new OnPhotosListener() {
@@ -433,13 +439,13 @@ public class MainActivity extends ActionBarActivity {
                 @Override
                 public void onException(Throwable throwable) {
                     dialog.dismiss();
-                    //  mResult.setText(throwable.getMessage());
+                    //mResult.setText(throwable.getMessage());
                 }
 
                 @Override
                 public void onFail(String reason) {
                     dialog.dismiss();
-                    //mResult.setText(reason);
+                   // mResult.setText(reason);
                 }
 
                 @Override
@@ -526,7 +532,7 @@ public class MainActivity extends ActionBarActivity {
 
 
 
-    public static class Fragment2 extends Fragment {
+    public static class Fragment1 extends Fragment {
 
         private CallbackManager callbackManager;
 
@@ -557,7 +563,7 @@ public class MainActivity extends ActionBarActivity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             // Inflate the layout for this fragment
-            View view= inflater.inflate(R.layout.frag2, container, false);
+            View view= inflater.inflate(R.layout.frag_1, container, false);
             callbackManager = CallbackManager.Factory.create();
 
             LoginButton loginButton = (LoginButton) view.findViewById(R.id.login_button);
@@ -589,6 +595,11 @@ public class MainActivity extends ActionBarActivity {
 
                     //Profile user;
                     //userPicture.setProfileId(user.getId());
+
+                    if (android.os.Build.VERSION.SDK_INT >= 11)
+                    {
+                        getActivity().recreate();
+                    }
                 }
 
                 @Override
@@ -617,7 +628,7 @@ public class MainActivity extends ActionBarActivity {
 
 
 
-            //mResult = (TextView) view.findViewById(R.id.result);
+            mResult = (TextView) view.findViewById(R.id.result);
             //mMore = (TextView) view.findViewById(R.id.load_more);
             //mMore.setPaintFlags(mMore.getPaint().getFlags() | Paint.UNDERLINE_TEXT_FLAG);
             /*mGetButton = (Button) view.findViewById(R.id.button);
@@ -637,6 +648,7 @@ public class MainActivity extends ActionBarActivity {
                     dialog.setIndeterminate(true);
                     dialog.setCanceledOnTouchOutside(false);
 
+                    lv.setEmptyView(view.findViewById(R.id.emptyview));
 
 
                     String entityId="ecell.iitkgp";
@@ -650,13 +662,13 @@ public class MainActivity extends ActionBarActivity {
                         @Override
                         public void onException(Throwable throwable) {
                             dialog.dismiss();
-                          //  mResult.setText(throwable.getMessage());
+                            mResult.setText(throwable.getMessage());
                         }
 
                         @Override
                         public void onFail(String reason) {
                             dialog.dismiss();
-                            //mResult.setText(reason);
+                            mResult.setText(reason);
                         }
 
                         @Override

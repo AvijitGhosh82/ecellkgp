@@ -15,7 +15,7 @@ import java.util.List;
  * @author mwho
  */
 public class PagerAdapter extends FragmentPagerAdapter {
-    private final String[] TITLES = {"Home", "TimeLine"};
+    private final String[] TITLES = {"Timeline", "Gallery"};
 
     private List<Fragment> fragments;
     /**

@@ -5,7 +5,7 @@
 
     <!-- Background color -->
     <solid
-        android:color="@color/darkmagenta" >
+        android:color="@color/black" >
     </solid>
 
     <!-- Padding -->
