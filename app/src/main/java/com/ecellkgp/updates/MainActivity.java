@@ -688,10 +688,7 @@ public class MainActivity extends ActionBarActivity {
                            // mAllPages += "<br>";
                            // mResult.setText(Html.fromHtml(mAllPages));
 
-                            arrayAdapter = new ArrayAdapter<String>(
-                                    getActivity(),
-                                    android.R.layout.simple_list_item_1,
-                                    playerList );
+                            arrayAdapter = new TimeLineAdapter(getActivity(), (ArrayList<String>) playerList);
 
                             lv.setAdapter(arrayAdapter);
 

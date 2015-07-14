@@ -2,6 +2,8 @@ package com.ecellkgp.updates;
 
 import android.content.Context;
 import android.database.Cursor;
+import android.graphics.Color;
+import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,6 +35,9 @@ public class CustomCursorAdapter extends CursorAdapter {
     public void bindView(View view, Context context, Cursor cursor) {
         // here we are setting our data
         // that means, take the data from the cursor and put it in views
+
+        CardView card = (CardView) view.findViewById(R.id.card_view_list);
+        card.setCardBackgroundColor(Color.parseColor("#292929"));
 
         TextView textViewPersonName = (TextView) view.findViewById(R.id.tv_person_name);
         textViewPersonName.setText(cursor.getString(cursor.getColumnIndex(cursor.getColumnName(1))));

@@ -29,7 +29,7 @@ public class SSP extends ActionBarActivity {
 
         TextView tv = (TextView) findViewById(R.id.alum);
         tv.setText(Html.fromHtml("<h1 >About</h1><p>\n" +
-                "\t\t\t\t\t\t<b>Startup Services Program</b> is an initiative by E-Cell, IIT Kharagpur. It aims to aid the fledgling start-ups of IIT Kharagpur in terms of providing them certain required business services. Starting-up can be a tricky business. It requires a great deal of effort, will, perseverance on the part of the founders along with plenty of resources. Most of the start-ups die out and shut down because of paucity of quality services required at the opportune time. Advice on legal, taxation, financial, technical aspects of running a startup, co-working space, HR needs etc. are just a few things which a startup requires post inception. A startup usually faces constant financial crunch in its early stages. To help them in their endeavours, this initiative has been launched wherein these start-ups are provided certain free/discounted services to reduce their financial burden. It is expected that this will encourage more and more students to take up the path of entrepreneurship and IIT Kharagpur will see an unprecedented rise in the number of entrepreneurs being produced in the institute. The benefits under this program are limited only to IIT Kharagpur student and alumni start-ups.\n" +
+                "<b>Startup Services Program</b> is an initiative by E-Cell, IIT Kharagpur. It aims to aid the fledgling start-ups of IIT Kharagpur in terms of providing them certain required business services. Starting-up can be a tricky business. It requires a great deal of effort, will, perseverance on the part of the founders along with plenty of resources. Most of the start-ups die out and shut down because of paucity of quality services required at the opportune time. Advice on legal, taxation, financial, technical aspects of running a startup, co-working space, HR needs etc. are just a few things which a startup requires post inception. A startup usually faces constant financial crunch in its early stages. To help them in their endeavours, this initiative has been launched wherein these start-ups are provided certain free/discounted services to reduce their financial burden. It is expected that this will encourage more and more students to take up the path of entrepreneurship and IIT Kharagpur will see an unprecedented rise in the number of entrepreneurs being produced in the institute. The benefits under this program are limited only to IIT Kharagpur student and alumni start-ups.\n" +
                 "\n" +
                 "\t\t\t\t\t\t\t\t\t\t\t\t</p>\n" +
                 "\t\t\t\t\t    <h4>You are not eligible to avail discounts under this service if: </h4>\n" +
@@ -61,7 +61,7 @@ public class SSP extends ActionBarActivity {
                 "\t\t\t\t<div >\n" +
                 "\t\t\t\t<div >\n" +
                 "\t\t\t\t\t<h3>\n" +
-                "\t\t\t\t\t\tShovan Panigrahi\n" +
+                "\t\t\tShovan Panigrahi\n" +
                 "\t\t\t\t\t</h3>\n" +
                 "                     <h4>shovan@ecell-iitkgp.org    </h4>\n" +
                 "                     <h4>+91-7872683946    </h4>"));

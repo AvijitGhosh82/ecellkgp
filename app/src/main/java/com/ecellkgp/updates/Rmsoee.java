@@ -28,7 +28,7 @@ public class Rmsoee extends ActionBarActivity {
         }
 
         TextView tv= (TextView)findViewById(R.id.alum);
-        tv.setText(Html.fromHtml("<h2>Rajendra Mishra School of Engineering Entrepreneurship<a href=\"index.html\">Home</a></h2>\n" +
+        tv.setText(Html.fromHtml("<h2>Rajendra Mishra School of Engineering Entrepreneurship</h2>\n" +
                 "            <p>Rajendra Mishra School of Engineering Entrepreneurship (RMSOEE) was established in the year 2010 to encourage entrepreneurial minds of the engineering students at IIT Kharagpur.</p>\n" +
                 "            <p>\n" +
                 "            \tIt is a revolutionary step forward by integrating the academic and practice aspects of entrepreneurship education. This is for the first time that a Higher Education Institution of technology has established such a kind of school in India where the output will be an entrepreneur and a potential world-class enterprise. In addition to establishing a core of academic resources in entrepreneurial management, the School leverages the academic engineering departments of the Institute, Vinod Gupta School of Management, Rajiv Gandhi School of Intellectual Property Law, School of Medical Sciences and Technology and the Science and Technology Entrepreneurs' Park (STEP). The RMSOEE is co-located with the STEP, and eventually as new infrastructural developments are completed.\n" +
