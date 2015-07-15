@@ -1,6 +1,7 @@
 package com.ecellkgp.updates;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
@@ -50,8 +51,21 @@ public class PhotoAdapter extends ArrayAdapter<String> {
         double positionHeight = getPositionRatio(position);
 
         vh.imgView.setHeightRatio(positionHeight);
-
         Picasso.with(context1).load(getItem(position)).into(vh.imgView);
+
+
+        vh.imgView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent i = new Intent(context1, Photoview.class);
+                String strName = getItem(position);
+                i.putExtra("photouri", strName);
+                context1.startActivity(i);
+            }
+        });
+
+
         return convertView;
     }
 

@@ -190,7 +190,7 @@ public class MainActivity extends ActionBarActivity {
         MenuInflater inflater = getMenuInflater();
         //MenuInflater inflater = new MenuInflater(this);
 
-        inflater.inflate(R.menu.menu_main, menu);
+       // inflater.inflate(R.menu.menu_main, menu);
 
 
         return true;

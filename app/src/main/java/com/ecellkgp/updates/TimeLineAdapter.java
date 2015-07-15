@@ -33,6 +33,10 @@ public class TimeLineAdapter extends ArrayAdapter<String> {
         // Populate the data into the template view using the data object
         tvName.setText(user);
 
+        TextView tv2 = (TextView) convertView.findViewById(R.id.tv_person_pin);
+        tv2.setVisibility(View.GONE);
+
+
         CardView card = (CardView) convertView.findViewById(R.id.card_view_list);
         card.setCardBackgroundColor(Color.parseColor("#292929"));
         //tvHome.setText(user.hometown);

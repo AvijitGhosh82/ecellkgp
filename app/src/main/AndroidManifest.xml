@@ -125,6 +125,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.ecellkgp.updates.MainActivity" />
         </activity>
+        <activity
+            android:name=".Photoview"
+            android:label="Gallery"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.ecellkgp.updates.MainActivity" />
+        </activity>
     </application>
 
 </manifest>
