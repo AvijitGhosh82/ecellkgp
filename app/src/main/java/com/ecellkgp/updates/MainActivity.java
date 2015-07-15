@@ -41,6 +41,8 @@ import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
+import com.google.android.gms.gcm.GoogleCloudMessaging;
+import com.loopj.android.http.RequestParams;
 import com.sromku.simple.fb.SimpleFacebook;
 import com.sromku.simple.fb.actions.Cursor;
 import com.sromku.simple.fb.entities.Photo;
@@ -91,6 +93,17 @@ public class MainActivity extends ActionBarActivity {
         mSimpleFacebook.onActivityResult(requestCode, resultCode, data);
     }
 
+    RequestParams params = new RequestParams();
+    GoogleCloudMessaging gcmObj;
+    Context applicationContext;
+    String regId = "";
+
+    private final static int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
+
+    AsyncTask<Void, Void, String> createRegIdTask;
+
+    public static final String REG_ID = "regId";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -103,6 +116,10 @@ public class MainActivity extends ActionBarActivity {
         // test local language
         //Utils.updateLanguage(getApplicationContext(), "en");
         //Utils.printHashKey(getApplicationContext());
+
+
+
+
 
 
         toolbar = (Toolbar) findViewById(R.id.my_awesome_toolbar);
@@ -135,6 +152,10 @@ public class MainActivity extends ActionBarActivity {
 
                 if (position == 2) {
                     Intent intent = new Intent(MainActivity.this ,SSP.class);
+                    startActivity(intent);
+                }
+                if (position == 3) {
+                    Intent intent = new Intent(MainActivity.this ,EAD.class);
                     startActivity(intent);
                 }
                 if (position == 5) {

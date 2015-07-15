@@ -41,7 +41,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
+            android:layout_marginBottom="10dp"
             android:text="Register"
             android:textSize="45sp"
             android:gravity="center"
@@ -52,31 +52,30 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="40dp"
             android:gravity="center"
-            android:text="You need to register with your mail id to receive instant notifications from our server. Don't worry, we won't email you." />
+            android:text="You need to register this device to receive instant updates from our server. Press the button below to continue." />
 
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bg_form_rounded"
-            android:orientation="vertical" >
+        <!-- <LinearLayout
+             android:layout_width="fill_parent"
+             android:layout_height="wrap_content"
+             android:background="@drawable/bg_form_rounded"
+             android:orientation="vertical" >
 
-            <EditText
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:background="@null"
-                android:hint="@string/email"
-                android:padding="5dp"
-                android:singleLine="true"
-                android:id="@+id/email" android:textColor="@color/black"/>
-        </LinearLayout>
+             <EditText
+                 android:layout_width="fill_parent"
+                 android:layout_height="wrap_content"
+                 android:layout_marginBottom="10dp"
+                 android:background="@null"
+                 android:hint="@string/email"
+                 android:padding="5dp"
+                 android:singleLine="true"
+                 android:id="@+id/email" android:textColor="@color/black"/>
+         </LinearLayout>-->
 
         <Button
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
             android:text="@string/login"
-            android:background="@drawable/bg_button_rounded"
             android:textColor="@color/white"
             android:onClick="RegisterUser"/>
     </LinearLayout>

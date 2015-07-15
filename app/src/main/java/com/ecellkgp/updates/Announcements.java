@@ -75,7 +75,8 @@ public class Announcements extends ActionBarActivity {
             
         }*/
 
-        
+
+        listView.setEmptyView(findViewById(R.id.emptyviewtxt));
 
 
         // Database query can be a time consuming task ..

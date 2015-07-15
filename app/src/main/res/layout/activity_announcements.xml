@@ -25,7 +25,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin">
 
-    <LinearLayout
+    <FrameLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
@@ -50,7 +50,15 @@
             android:dividerHeight="5dp"
             android:layout_weight="1"/>
 
-    </LinearLayout>
+        <TextView
+            android:id="@+id/emptyviewtxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="No announcements to show." />
+
+    </FrameLayout>
 
 </RelativeLayout>
     </LinearLayout>

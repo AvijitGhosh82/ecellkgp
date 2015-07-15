@@ -79,28 +79,34 @@ public class RegisterActivity extends ActionBarActivity {
 
     // When Register Me button is clicked
     public void RegisterUser(View view) {
-        String emailID = emailET.getText().toString();
+        //String emailID = emailET.getText().toString();
 
-        if (!TextUtils.isEmpty(emailID) && Utility.validate(emailID)) {
+       // if (!TextUtils.isEmpty(emailID) && Utility.validate(emailID)) {
 
             // Check if Google Play Service is installed in Device
             // Play services is needed to handle GCM stuffs
             if (checkPlayServices()) {
 
+                prgDialog = new ProgressDialog(this);
+                // Set Progress Dialog Text
+                prgDialog.setMessage("Please wait...");
+                // Set Cancelable as False
+                prgDialog.setCancelable(false);
+
                 // Register Device in GCM Server
-                registerInBackground(emailID);
+                registerInBackground();
             }
-        }
+        //}
         // When Email is invalid
-        else {
-            Toast.makeText(getApplicationContext(), "Please enter valid email",
-                    Toast.LENGTH_LONG).show();
-        }
+       // else {
+         //   Toast.makeText(getApplicationContext(), "Please enter valid email",
+           //         Toast.LENGTH_LONG).show();
+        //}
 
     }
 
     // AsyncTask to register Device in GCM Server
-    private void registerInBackground(final String emailID) {
+    private void registerInBackground() {
         new AsyncTask<Void, Void, String>() {
             @Override
             protected String doInBackground(Void... params) {
@@ -122,9 +128,12 @@ public class RegisterActivity extends ActionBarActivity {
 
             @Override
             protected void onPostExecute(String msg) {
+
+                prgDialog.dismiss();
+
                 if (!TextUtils.isEmpty(regId)) {
                     // Store RegId created by GCM Server in SharedPref
-                    storeRegIdinSharedPref(getApplicationContext(), regId, emailID);
+                    storeRegIdinSharedPref(getApplicationContext(), regId);
                     Toast.makeText(
                             getApplicationContext(),
                             "Registered with GCM Server successfully.\n\n"
@@ -140,13 +149,12 @@ public class RegisterActivity extends ActionBarActivity {
     }
 
     // Store  RegId and Email entered by User in SharedPref
-    private void storeRegIdinSharedPref(Context context, String regId,
-                                        String emailID) {
+    private void storeRegIdinSharedPref(Context context, String regId) {
         SharedPreferences prefs = getSharedPreferences("UserDetails",
                 Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
         editor.putString(REG_ID, regId);
-        editor.putString(EMAIL_ID, emailID);
+        //editor.putString(EMAIL_ID, emailID);
         editor.commit();
         storeRegIdinServer();
 
@@ -154,7 +162,7 @@ public class RegisterActivity extends ActionBarActivity {
 
     // Share RegID with GCM Server Application (Php)
     private void storeRegIdinServer() {
-        prgDialog=ProgressDialog.show(this.getApplicationContext(), "", "Loading. Please wait...", false);
+//        prgDialog=ProgressDialog.show(this.getApplicationContext(), "", "Loading. Please wait...", false);
         //prgDialog.show();
         params.put("regId", regId);
         // Make RESTful webservice call using AsyncHttpClient object
@@ -166,10 +174,10 @@ public class RegisterActivity extends ActionBarActivity {
                     @Override
                     public void onSuccess(String response) {
                         // Hide Progress Dialog
-                        prgDialog.hide();
-                        if (prgDialog != null) {
-                            prgDialog.dismiss();
-                        }
+                       // prgDialog.hide();
+                       // if (prgDialog != null) {
+                         ///   prgDialog.dismiss();
+                        //}
                         Toast.makeText(getApplicationContext(),
                                 "Reg Id shared successfully with Web App ",
                                 Toast.LENGTH_LONG).show();
@@ -187,10 +195,10 @@ public class RegisterActivity extends ActionBarActivity {
                     public void onFailure(int statusCode, Throwable error,
                                           String content) {
                         // Hide Progress Dialog
-                        prgDialog.hide();
-                        if (prgDialog != null) {
-                            prgDialog.dismiss();
-                        }
+                       // prgDialog.hide();
+                       // if (prgDialog != null) {
+                         //   prgDialog.dismiss();
+                        //}
                         // When Http response code is '404'
                         if (statusCode == 404) {
                             Toast.makeText(getApplicationContext(),
@@ -234,10 +242,10 @@ public class RegisterActivity extends ActionBarActivity {
             }
             return false;
         } else {
-           // Toast.makeText(
-             //       getApplicationContext(),
-               //     "This device supports Play services, App will work normally",
-                 //   Toast.LENGTH_LONG).show();
+            // Toast.makeText(
+            //       getApplicationContext(),
+            //     "This device supports Play services, App will work normally",
+            //   Toast.LENGTH_LONG).show();
         }
         return true;
     }
