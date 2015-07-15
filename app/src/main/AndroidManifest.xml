@@ -142,6 +142,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.ecellkgp.updates.MainActivity" />
         </activity>
+        <activity
+            android:name=".Empresario"
+            android:label="@string/title_activity_empresario"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.ecellkgp.updates.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

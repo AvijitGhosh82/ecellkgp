@@ -9,22 +9,22 @@ import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.SpannableString;
 
-public class EAD extends ActionBarActivity {
+public class Empresario extends ActionBarActivity {
     // When requested, this adapter returns a DemoObjectFragment,
     // representing an object in the collection.
-    DemoCollectionPagerAdapter mDemoCollectionPagerAdapter;
+    DemoCollectionPagerAdapter2 mDemoCollectionPagerAdapter;
     ViewPager mViewPager;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ead);
+        setContentView(R.layout.activity_empresario);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.my_awesome_toolbar);
 
 
         if (toolbar != null) {
             setSupportActionBar(toolbar);
-            getSupportActionBar().setTitle(new SpannableString("EAD"));
+            getSupportActionBar().setTitle(new SpannableString("Empresario"));
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(true);
         }
@@ -32,7 +32,7 @@ public class EAD extends ActionBarActivity {
         // ViewPager and its adapters use support library
         // fragments, so use getSupportFragmentManager.
         mDemoCollectionPagerAdapter =
-                new DemoCollectionPagerAdapter(
+                new DemoCollectionPagerAdapter2(
                         getSupportFragmentManager());
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(mDemoCollectionPagerAdapter);
@@ -41,14 +41,14 @@ public class EAD extends ActionBarActivity {
 
 // Since this is an object collection, use a FragmentStatePagerAdapter,
 // and NOT a FragmentPagerAdapter.
-class DemoCollectionPagerAdapter extends FragmentStatePagerAdapter {
-    public DemoCollectionPagerAdapter(FragmentManager fm) {
+class DemoCollectionPagerAdapter2 extends FragmentStatePagerAdapter {
+    public DemoCollectionPagerAdapter2(FragmentManager fm) {
         super(fm);
     }
 
     @Override
     public Fragment getItem(int i) {
-        Fragment fragment = new DemoObjectFragment();
+        Fragment fragment = new EmpresarioFragment();
         Bundle args = new Bundle();
         // Our object is just an integer :-P
         args.putInt(DemoObjectFragment.ARG_OBJECT, i + 1);
@@ -58,12 +58,23 @@ class DemoCollectionPagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public int getCount() {
-        return 24;
+        return 4;
     }
 
     @Override
     public CharSequence getPageTitle(int position) {
-        return "City " + (position + 1);
+        switch(position)
+        {
+            case 0:
+                return "Home";
+            case 1:
+                return "Info";
+            case 2:
+                return "Incentives";
+            case 3:
+                return "Contact";
+        }
+        return null;
     }
 }
 

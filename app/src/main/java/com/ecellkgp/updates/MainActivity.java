@@ -144,27 +144,44 @@ public class MainActivity extends ActionBarActivity {
                 if (position == 0) {
                     Intent intent = new Intent(MainActivity.this , About.class);
                     startActivity(intent);
+                    mDrawerLayout.closeDrawer(Gravity.LEFT);
                 }
                 if (position == 1) {
                     Intent intent = new Intent(MainActivity.this ,Rmsoee.class);
                     startActivity(intent);
+                    mDrawerLayout.closeDrawer(Gravity.LEFT);
+
                 }
 
                 if (position == 2) {
                     Intent intent = new Intent(MainActivity.this ,SSP.class);
                     startActivity(intent);
+                    mDrawerLayout.closeDrawer(Gravity.LEFT);
+
                 }
                 if (position == 3) {
                     Intent intent = new Intent(MainActivity.this ,EAD.class);
                     startActivity(intent);
+                    mDrawerLayout.closeDrawer(Gravity.LEFT);
+
+                }
+                if (position == 4) {
+                    Intent intent = new Intent(MainActivity.this ,Empresario.class);
+                    startActivity(intent);
+                    mDrawerLayout.closeDrawer(Gravity.LEFT);
+
                 }
                 if (position == 5) {
                     Intent intent = new Intent(MainActivity.this , RegisterActivity.class);
                     startActivity(intent);
+                    mDrawerLayout.closeDrawer(Gravity.LEFT);
+
                 }
                 if (position == 6) {
                     Intent intent = new Intent(MainActivity.this, Contact.class);
                     startActivity(intent);
+                    mDrawerLayout.closeDrawer(Gravity.LEFT);
+
                 }
 
             }
@@ -650,15 +667,7 @@ public class MainActivity extends ActionBarActivity {
 
 
             mResult = (TextView) view.findViewById(R.id.result);
-            //mMore = (TextView) view.findViewById(R.id.load_more);
-            //mMore.setPaintFlags(mMore.getPaint().getFlags() | Paint.UNDERLINE_TEXT_FLAG);
-            /*mGetButton = (Button) view.findViewById(R.id.button);
-            mGetButton.setText(EXAMPLE);
-            mGetButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    mAllPages = "";
-                    mResult.setText(mAllPages);*/
+
 
 
 

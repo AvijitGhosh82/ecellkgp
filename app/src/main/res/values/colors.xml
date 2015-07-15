@@ -23,6 +23,8 @@
     <color name="bg_gradient_end">#15547E</color>
     <color name="bg_button_login">#1D394C</color>
 
+    <color name="black_overlay">#66000000</color>
+
     <!--<item name="magenta" type="color">#E91E63</item>
     <item name="darkmagenta" type="color">#C8306C</item>-->
 </resources> 
