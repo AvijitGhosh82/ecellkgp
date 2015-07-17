@@ -54,7 +54,6 @@ import com.sromku.simple.fb.utils.Utils;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Vector;
 
@@ -430,31 +429,13 @@ public class MainActivity extends ActionBarActivity {
 
             lv = (StaggeredGridView) view.findViewById(R.id.grid_view);
 
-            // Getting listview from xml
-           // final ListView lv = (ListView) view.findViewById(R.id.list);
-            final ArrayList<PhotoInfo> playerList = new ArrayList<PhotoInfo>();
 
-
-// Creating a button - Load More
 
             btnLoadMore = new Button(getActivity());
             btnLoadMore.setText("Load More");
 
-// Adding button to listview at footer
 
 
-
-
-           // mResult = (TextView) view.findViewById(R.id.result);
-            //mMore = (TextView) view.findViewById(R.id.load_more);
-            //mMore.setPaintFlags(mMore.getPaint().getFlags() | Paint.UNDERLINE_TEXT_FLAG);
-            /*mGetButton = (Button) view.findViewById(R.id.button);
-            mGetButton.setText(EXAMPLE);
-            mGetButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    mAllPages = "";
-                    mResult.setText(mAllPages);*/
 
 
 
@@ -496,41 +477,27 @@ public class MainActivity extends ActionBarActivity {
                         @Override
                         public String process(Photo photo) {
                             PhotoInfo i=new PhotoInfo(photo.getSource(),photo.getCreatedTime());
-                            playerList.add(i);
+                            if (mAdapter == null)
+                                mAdapter = new PhotoAdapter(getActivity(), R.id.textView1);
+                            mAdapter.add(i);
                             return "\u25CF " + photo.getSource() + " \u25CF";
                         }
                     });
 
-                    //playerList.add(name);
-                    // mAllPages += "<br>";
-                    // mResult.setText(Html.fromHtml(mAllPages));
 
-                    /*arrayAdapter = new ArrayAdapter<String>(
-                            getActivity(),
-                            android.R.layout.simple_list_item_1,
-                            playerList );
-
-                    lv.setAdapter(arrayAdapter);*/
-
-                    ArrayList<PhotoInfo> mData = null;
-                    if (mData == null) {
-                        mData = new ArrayList<PhotoInfo>(new LinkedHashSet<PhotoInfo>(playerList));
-                        //mData = playerList;
-                    }
-
-                    if (mAdapter == null) {
-                        mAdapter = new PhotoAdapter(getActivity(), R.id.textView1);
-                    }
-
-                    mData = new ArrayList<PhotoInfo>(new LinkedHashSet<PhotoInfo>(mData));
-
-                    for (PhotoInfo data : mData) {
-                        mAdapter.add(data);
-                    }
 
                     lv.addFooterView(btnLoadMore);
 
-                    lv.setAdapter(mAdapter);
+                    if(lv.getAdapter() != mAdapter)
+
+                        lv.setAdapter(mAdapter);
+
+                    else
+                        mAdapter.notifyDataSetChanged();
+
+
+
+
 
 
                     // check if more pages exist
@@ -555,7 +522,7 @@ public class MainActivity extends ActionBarActivity {
                 public void onClick(View arg0) {
                     mAllPages += "<br>";
                     cursor.next();
-                    mAdapter.notifyDataSetChanged();
+                    //mAdapter.notifyDataSetChanged();
                 }
             });
         }
@@ -721,9 +688,15 @@ public class MainActivity extends ActionBarActivity {
                            // mAllPages += "<br>";
                            // mResult.setText(Html.fromHtml(mAllPages));
 
-                            arrayAdapter = new TimeLineAdapter(getActivity(), (ArrayList<PostInfo>) playerList);
+                            if(arrayAdapter==null)
 
-                            lv.setAdapter(arrayAdapter);
+                            {arrayAdapter = new TimeLineAdapter(getActivity(), (ArrayList<PostInfo>) playerList);
+
+                            lv.setAdapter(arrayAdapter);}
+
+                            else
+
+                            {arrayAdapter.notifyDataSetChanged();}
 
                             lv.addFooterView(btnLoadMore);
 
@@ -749,7 +722,7 @@ public class MainActivity extends ActionBarActivity {
                 public void onClick(View arg0) {
                     mAllPages += "<br>";
                     cursor.next();
-                    arrayAdapter.notifyDataSetChanged();
+                    //arrayAdapter.notifyDataSetChanged();
                 }
             });
         }
