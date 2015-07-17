@@ -2,19 +2,23 @@ package com.ecellkgp.updates;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.v7.graphics.Palette;
 import android.util.Log;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.TextView;
 
 import com.etsy.android.grid.util.DynamicHeightImageView;
+import com.github.florent37.picassopalette.PicassoPalette;
 import com.squareup.picasso.Picasso;
 
+import java.text.SimpleDateFormat;
 import java.util.Random;
 
-public class PhotoAdapter extends ArrayAdapter<String> {
+public class PhotoAdapter extends ArrayAdapter<PhotoInfo> {
 
     private static final String TAG = "SampleAdapter";
 
@@ -22,9 +26,9 @@ public class PhotoAdapter extends ArrayAdapter<String> {
     private final Random mRandom;
     private static final SparseArray<Double> sPositionHeightRatios = new SparseArray<Double>();
     private final Context context1;
+    private Palette palette;
 
-    public PhotoAdapter(Context context, int textViewResourceId
-                         ) {
+    public PhotoAdapter(Context context, int textViewResourceId) {
         super(context, textViewResourceId);
         this.mLayoutInflater = LayoutInflater.from(context);
         this.mRandom = new Random();
@@ -35,7 +39,7 @@ public class PhotoAdapter extends ArrayAdapter<String> {
     public View getView(final int position, View convertView,
                         final ViewGroup parent) {
 
-        ViewHolder vh;
+        final ViewHolder vh;
         if (convertView == null) {
             convertView = mLayoutInflater.inflate(R.layout.photoitem,
                     parent, false);
@@ -51,7 +55,19 @@ public class PhotoAdapter extends ArrayAdapter<String> {
         double positionHeight = getPositionRatio(position);
 
         vh.imgView.setHeightRatio(positionHeight);
-        Picasso.with(context1).load(getItem(position)).into(vh.imgView);
+        //Picasso.with(context1).load(getItem(position)).into(vh.imgView);
+
+        TextView tv=(TextView)convertView.findViewById(R.id.date);
+        //SimpleDateFormat df = new SimpleDateFormat("MMMM d, yyyy 'at' h:mm a");
+        SimpleDateFormat df = new SimpleDateFormat("MMMM d, yyyy");
+        tv.setText(df.format(getItem(position).getDate()));
+
+        Picasso.with(context1).load(getItem(position).getUrl()).into(vh.imgView,
+                PicassoPalette.with(getItem(position).getUrl(), vh.imgView)
+                        .use(PicassoPalette.Profile.MUTED)
+                        .intoBackground(tv, PicassoPalette.Swatch.RGB)
+                        .intoTextColor(tv, PicassoPalette.Swatch.BODY_TEXT_COLOR)
+        );
 
 
         vh.imgView.setOnClickListener(new View.OnClickListener() {
@@ -59,11 +75,12 @@ public class PhotoAdapter extends ArrayAdapter<String> {
             public void onClick(View view) {
 
                 Intent i = new Intent(context1, Photoview.class);
-                String strName = getItem(position);
+                String strName = getItem(position).getUrl();
                 i.putExtra("photouri", strName);
                 context1.startActivity(i);
             }
         });
+
 
 
         return convertView;

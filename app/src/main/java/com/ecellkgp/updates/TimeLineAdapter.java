@@ -9,20 +9,23 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Created by Avijit Ghosh on 14 Jul 2015.
  */
-public class TimeLineAdapter extends ArrayAdapter<String> {
-    public TimeLineAdapter(Context context, ArrayList<String> users) {
+public class TimeLineAdapter extends ArrayAdapter<PostInfo> {
+    public TimeLineAdapter(Context context, ArrayList<PostInfo> users) {
         super(context, 0, users);
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         // Get the data item for this position
-        String user = getItem(position);
+        String user = getItem(position).getText();
+        Date date=getItem(position).getDate();
         // Check if an existing view is being reused, otherwise inflate the view
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.single_row_item, parent, false);
@@ -34,7 +37,9 @@ public class TimeLineAdapter extends ArrayAdapter<String> {
         tvName.setText(user);
 
         TextView tv2 = (TextView) convertView.findViewById(R.id.tv_person_pin);
-        tv2.setVisibility(View.GONE);
+        SimpleDateFormat df = new SimpleDateFormat("MMMM d, yyyy 'at' h:mm a");
+        //SimpleDateFormat df = new SimpleDateFormat("MMMM d, yyyy");
+        tv2.setText(df.format(getItem(position).getDate()));
 
 
         CardView card = (CardView) convertView.findViewById(R.id.card_view_list);

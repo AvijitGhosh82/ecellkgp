@@ -12,7 +12,6 @@ import android.support.v7.widget.Toolbar;
 import android.text.SpannableString;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -37,7 +36,6 @@ public class RegisterActivity extends ActionBarActivity {
 
     public static final String REG_ID = "regId";
     public static final String EMAIL_ID = "eMailId";
-    EditText emailET;
     private Toolbar toolbar;
 
     @Override
@@ -56,7 +54,6 @@ public class RegisterActivity extends ActionBarActivity {
         }
 
         applicationContext = getApplicationContext();
-        emailET = (EditText) findViewById(R.id.email);
 
         //prgDialog = new ProgressDialog(this);
         // Set Progress Dialog Text

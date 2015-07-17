@@ -264,7 +264,7 @@ public class MainActivity extends ActionBarActivity {
 
     @Override
     public void onBackPressed() {
-        if (mDrawerLayout.isDrawerOpen(Gravity.START | Gravity.LEFT)) {
+        if (mDrawerLayout.isDrawerOpen(Gravity.LEFT)) {
             mDrawerLayout.closeDrawers();
             return;
         }
@@ -432,7 +432,8 @@ public class MainActivity extends ActionBarActivity {
 
             // Getting listview from xml
            // final ListView lv = (ListView) view.findViewById(R.id.list);
-            final ArrayList<String> playerList = new ArrayList<String>();
+            final ArrayList<PhotoInfo> playerList = new ArrayList<PhotoInfo>();
+
 
 // Creating a button - Load More
 
@@ -494,7 +495,8 @@ public class MainActivity extends ActionBarActivity {
                     mAllPages += Utils.join(response.iterator(), "<br>", new Utils.Process<Photo>() {
                         @Override
                         public String process(Photo photo) {
-                            playerList.add(photo.getSource());
+                            PhotoInfo i=new PhotoInfo(photo.getSource(),photo.getCreatedTime());
+                            playerList.add(i);
                             return "\u25CF " + photo.getSource() + " \u25CF";
                         }
                     });
@@ -510,9 +512,9 @@ public class MainActivity extends ActionBarActivity {
 
                     lv.setAdapter(arrayAdapter);*/
 
-                    ArrayList<String> mData = null;
+                    ArrayList<PhotoInfo> mData = null;
                     if (mData == null) {
-                        mData = new ArrayList<String>(new LinkedHashSet<String>(playerList));
+                        mData = new ArrayList<PhotoInfo>(new LinkedHashSet<PhotoInfo>(playerList));
                         //mData = playerList;
                     }
 
@@ -520,9 +522,9 @@ public class MainActivity extends ActionBarActivity {
                         mAdapter = new PhotoAdapter(getActivity(), R.id.textView1);
                     }
 
-                    mData = new ArrayList<String>(new LinkedHashSet<String>(mData));
+                    mData = new ArrayList<PhotoInfo>(new LinkedHashSet<PhotoInfo>(mData));
 
-                    for (String data : mData) {
+                    for (PhotoInfo data : mData) {
                         mAdapter.add(data);
                     }
 
@@ -581,7 +583,7 @@ public class MainActivity extends ActionBarActivity {
         private TextView mMore;
         private String mAllPages = "";
         private Button btnLoadMore;
-        private ArrayAdapter<String> arrayAdapter;
+        private ArrayAdapter<PostInfo> arrayAdapter;
 
         @Override
         public void onActivityCreated(Bundle savedInstanceState) {
@@ -654,7 +656,7 @@ public class MainActivity extends ActionBarActivity {
 
             // Getting listview from xml
             final ListView lv = (ListView) view.findViewById(R.id.list);
-            final List<String> playerList = new ArrayList<String>();
+            final List<PostInfo> playerList = new ArrayList<PostInfo>();
 
 // Creating a button - Load More
 
@@ -709,7 +711,8 @@ public class MainActivity extends ActionBarActivity {
                             mAllPages += Utils.join(response.iterator(), "<br>", new Utils.Process<Post>() {
                                 @Override
                                 public String process(Post post) {
-                                    playerList.add(post.getMessage());
+                                    PostInfo p=new PostInfo(post.getMessage(),post.getCreatedTime());
+                                    playerList.add(p);
                                     return "\u25CF " + post.getMessage() == null || "null".equalsIgnoreCase(post.getMessage()) ? post.getId() : post.getMessage() + " \u25CF";
                                 }
                             });
@@ -718,7 +721,7 @@ public class MainActivity extends ActionBarActivity {
                            // mAllPages += "<br>";
                            // mResult.setText(Html.fromHtml(mAllPages));
 
-                            arrayAdapter = new TimeLineAdapter(getActivity(), (ArrayList<String>) playerList);
+                            arrayAdapter = new TimeLineAdapter(getActivity(), (ArrayList<PostInfo>) playerList);
 
                             lv.setAdapter(arrayAdapter);
 

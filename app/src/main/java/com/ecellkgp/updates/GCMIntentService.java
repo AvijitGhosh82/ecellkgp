@@ -70,7 +70,7 @@ public class GCMIntentService extends IntentService {
 		mNotifyBuilder = new NotificationCompat.Builder(this)
 				.setContentTitle("Ecell IIT-KGP")
 				.setContentText("You've received new message.")
-				.setSmallIcon(R.mipmap.ic_launcher);
+				.setSmallIcon(R.drawable.ic_notify);
 		// Set pending intent
 		mNotifyBuilder.setContentIntent(resultPendingIntent);
 
