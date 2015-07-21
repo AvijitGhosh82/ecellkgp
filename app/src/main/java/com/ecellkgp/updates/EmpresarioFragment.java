@@ -75,7 +75,7 @@ public class EmpresarioFragment extends Fragment {
                         "\t\t\t\t\t\t<li>Best IIT Kharagpur Entry</li></ol>\n" +
                         "\t\t\t\t\t\n" +
                         "\t\t\t\t</article>\n" +
-                        "\t\t\t</section>"));
+                        "\t\t\t</section>",null, new MyTagHandler()));
                 break;
             case 3:
                 ((TextView) rootView.findViewById(R.id.city_name)).setText(Html.fromHtml("<header>\n" +
@@ -149,7 +149,7 @@ public class EmpresarioFragment extends Fragment {
                         "\t\t\t\t\t\t\t\t\t\t<div class=\"blogpost-content\">\n" +
                         "\t\t\t\t\t\t\t\t\t\t\t<p>Content rich feedback on the business model from world class entrepreneurs,investors, and professional service providers on our judging panel.</p>\n" +
                         "\t\t\t\t\t\t\t\t\t\t\t\n" +
-                        "\t\t\t\t\t\t\t\t\t\t</div>"));
+                        "\t\t\t\t\t\t\t\t\t\t</div>",null, new MyTagHandler()));
                 break;
             case 4:
                 ((TextView) rootView.findViewById(R.id.city_name)).setText(Html.fromHtml("<div class=\"col-md-4\" style=\"color:#fff;\">\n" +
@@ -163,7 +163,7 @@ public class EmpresarioFragment extends Fragment {
                         "\t\t\t\t\t\t\t\tSenior Manager, Competitions & Associations<br>\n" +
                         "\t\t\t\t\t\t\t\tkrishna@ecell-iitkgp.org<br>\n" +
                         "\t\t\t\t\t\t\t\t+91 9800-129-405\n" +
-                        "\t\t\t\t\t\t\t</div>"));
+                        "\t\t\t\t\t\t\t</div>",null, new MyTagHandler()));
                 break;
 
         }

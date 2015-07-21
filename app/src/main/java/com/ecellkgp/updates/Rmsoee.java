@@ -66,7 +66,7 @@ public class Rmsoee extends ActionBarActivity {
                 "            </p>\n" +
                 "            <p>\n" +
                 "            \tIndian Institute of Technology, Kharagpur (IIT KGP) has developed a rich entrepreneurship ecosystem consisting of academic programs, action based training programs and incubation over several domains with students, alumni and faculty. There is also a vibrant student based entrepreneurship cell (E- Cell) which organizes a variety of awareness and mentoring programs. As the premier engineering institution in the country, we have launched an effort to integrate the practice and academic aspects of entrepreneurship in IIT KGP, through the creation of School of Entrepreneurship (SoE).\n" +
-                "            </p>"));
+                "            </p>",null, new MyTagHandler()));
     }
 
     
