@@ -29,6 +29,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.astuetz.PagerSlidingTabStrip;
 import com.etsy.android.grid.StaggeredGridView;
@@ -159,8 +160,9 @@ public class MainActivity extends ActionBarActivity {
 
                 }
                 if (position == 3) {
-                    Intent intent = new Intent(MainActivity.this ,EAD.class);
-                    startActivity(intent);
+                    /*Intent intent = new Intent(MainActivity.this ,EAD.class);
+                    startActivity(intent);*/
+                    Toast.makeText(MainActivity.this,"EAD 2015 data is not finalized. Check back later!",Toast.LENGTH_LONG).show();
                     mDrawerLayout.closeDrawer(Gravity.LEFT);
 
                 }
